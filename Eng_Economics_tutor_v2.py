@@ -8,7 +8,7 @@ from logic_v2_GitHub import get_gemini_model, check_numeric_match, analyze_and_s
 # 1. Page Configuration
 st.set_page_config(page_title="TAMUCC Engineering Economy Tutor", layout="wide")
 
-# 2. CSS: Professional UI, Fix for Top Clipping, and Layout Consistency
+# 2. CSS: Professional UI, Fix for Top Clipping, and Chat Layout Consistency
 st.markdown("""
     <style>
     div.stButton > button {
@@ -146,34 +146,32 @@ elif st.session_state.page == "chat":
         st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
         st.session_state.last_id = prob['id']
 
-    # Unified container to align width of chat input and messages
-    chat_container = st.container()
+    # FIXED: Internal scrolling container for chat history
+    chat_container = st.container(height=450, border=True)
     with chat_container:
-        chat_box = st.container(height=400)
-        with chat_box:
-            for msg in st.session_state.chat_session.history:
-                text = get_text(msg)
-                if "HIDDEN_INSTRUCTION" not in text:
-                    with st.chat_message(get_role(msg)):
-                        st.markdown(text)
+        for msg in st.session_state.chat_session.history:
+            text = get_text(msg)
+            if "HIDDEN_INSTRUCTION" not in text:
+                with st.chat_message(get_role(msg)):
+                    st.markdown(text)
 
-        if user_input := st.chat_input("Enter your step or answer..."):
-            is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
+    # Input aligned outside the height-constrained container
+    if user_input := st.chat_input("Enter your step or answer..."):
+        is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
+        
+        if is_correct:
+            st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
+            hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
+            st.session_state.chat_session.send_message(hidden_prompt)
             
-            if is_correct:
-                st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
-                hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
-                st.session_state.chat_session.send_message(hidden_prompt)
-                
-                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
-                analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
-            else:
-                st.session_state.chat_session.send_message(user_input)
-            st.rerun()
+            history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
+            analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
+        else:
+            st.session_state.chat_session.send_message(user_input)
+        st.rerun()
 
     st.markdown("---")
     if st.button("⏭️ Next Problem"):
-        # Cycle through same category problems
         prefix = prob['id'].rsplit('_', 1)[0]
         cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
         remaining = [p for p in cat_probs if p['id'] != prob['id']]
@@ -198,13 +196,16 @@ elif st.session_state.page == "lecture":
 
     with col_tutor:
         st.subheader("💬 Ask Professor Um")
+        # FIXED: Internal scrolling container for Lecture chat
+        lec_chat_display = st.container(height=400, border=True)
         if "lec_session" not in st.session_state:
             model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage the student with Socratic questions.")
             st.session_state.lec_session = model.start_chat(history=[])
         
-        for msg in st.session_state.lec_session.history:
-            with st.chat_message(get_role(msg)):
-                st.markdown(get_text(msg))
+        with lec_chat_display:
+            for msg in st.session_state.lec_session.history:
+                with st.chat_message(get_role(msg)):
+                    st.markdown(get_text(msg))
         
         if lec_input := st.chat_input("Ask a question about the concept..."):
             st.session_state.lec_session.send_message(lec_input)
