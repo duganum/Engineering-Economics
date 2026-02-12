@@ -1,1052 +1,1052 @@
 [
   {
-    "id": "CAL_1_1",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the derivative of $f(x) = 3x^4 - 5x^2 + 2x - 10$ at $x = 1$.",
-    "targets": { "f'(1)": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_1_1",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the simple interest earned on a $10,000 loan for 3 years at 10% per annum.",
+    "targets": { "Interest": 3000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_2",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate the limit $\\lim_{x \\to 0} \\frac{\\sin(4x)}{x}$ using L'Hôpital's Rule.",
-    "targets": { "Limit": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_1_2",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "What is the future value of $1,000 invested for 3 years at 5% compound interest per year?",
+    "targets": { "FV": 1157.63 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_3",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the slope of the curve $y = \\sqrt{x}$ at $x = 9$.",
-    "targets": { "m": 0.167 },
-    "required_units": [""]
+    "id": "EngEco_1_3",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "If you invest $8,000 now with continuous compounding at 5% interest, how much will you have in 3.5 years?",
+    "targets": { "FV": 9530.13 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_4",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "A particle moves according to $s(t) = t^3 - 3t$. Find the acceleration ($a$) at $t = 2$.",
-    "targets": { "a": 12.0 },
-    "required_units": ["m/s^2"]
+    "id": "EngEco_1_4",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "A deposit of $10,000 at 5% interest converted quarterly. What is the value after 5 years?",
+    "targets": { "FV": 12820.37 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_5",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the maximum value of $f(x) = -x^2 + 4x + 5$.",
-    "targets": { "f_max": 9.0 },
-    "required_units": [""]
+    "id": "EngEco_1_5",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the effective annual interest rate for a 6.5% nominal rate compounded monthly.",
+    "targets": { "Effective Rate": 6.70 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_1_6",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the derivative of $f(x) = \\ln(x^2 + 1)$ at $x = 1$.",
-    "targets": { "f'(1)": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_6",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the present value of $5,000 due in 4 years if money is worth 4% compounded semi-annually.",
+    "targets": { "PV": 4267.46 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_7",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Determine the derivative of $y = e^{-2x}$ at $x = 0$.",
-    "targets": { "dy/dx": -2.0 },
-    "required_units": [""]
+    "id": "EngEco_1_7",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the future value of an annuity of $5,000 per year for 10 years at 6% compounded annually.",
+    "targets": { "FV": 65903.97 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_8",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "If $y = \\tan(x)$, what is the slope of the tangent line at $x = \\pi/4$?",
-    "targets": { "slope": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_1_8",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "An investor wants to provide a $3,000 scholarship every year for 10 years at a 5.5% return. How much must they give now?",
+    "targets": { "PV": 22612.89 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_9",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate the limit $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.",
-    "targets": { "Limit": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_1_9",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "What is the future value of an annuity of $100 paid monthly for 6 years at 6% nominal interest compounded monthly?",
+    "targets": { "FV": 8640.89 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_10",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find $dy/dx$ at $(3, 4)$ for the implicit function $x^2 + y^2 = 25$.",
-    "targets": { "dy/dx": -0.75 },
-    "required_units": [""]
+    "id": "EngEco_1_10",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "At what interest rate (annual) are an investment of $40,000 one year ago and a receipt of $50,000 one year from now equivalent?",
+    "targets": { "Rate": 11.80 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_1_11",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate $\\lim_{x \\to 0} \\frac{e^x - 1}{x}$.",
-    "targets": { "Limit": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_11",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the present value of a $1,000 payment due in 3 years if money is worth 6% compounded semi-annually.",
+    "targets": { "PV": 837.48 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_12",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the derivative of $f(x) = \cos^2(x)$ at $x = \\pi/4$.",
-    "targets": { "f'(\\pi/4)": -1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_12",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Compare the future value of $6,000 at 12% for 5 years compounded monthly. What is the amount?",
+    "targets": { "FV": 10900.22 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_13",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "What is the second derivative $f''(x)$ of $f(x) = x^3 - 6x^2$ at $x = 3$?",
-    "targets": { "f''(3)": 6.0 },
-    "required_units": [""]
+    "id": "EngEco_1_13",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "A depositor saves $2,000 for 5 years at 5% semiannually but withdraws $1,000 after 2.5 years. What is the final balance?",
+    "targets": { "Balance": 1412.31 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_14",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the critical point $x$ of the function $f(x) = x^2 - 8x + 10$.",
-    "targets": { "x": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_1_14",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the cash equivalent today of paying $1,000 each year for 5 years if money is worth 7% annually.",
+    "targets": { "PV": 4100.20 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_15",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate $\\lim_{x \\to \\infty} \\frac{5x^2 + 3x}{2x^2 - 1}$.",
-    "targets": { "Limit": 2.5 },
-    "required_units": [""]
+    "id": "EngEco_1_15",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "An investor makes a $2,000 annual deposit for 3 years at a 12% annual return. Find the final amount.",
+    "targets": { "FV": 6748.80 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_16",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the derivative of $y = (2x + 3)^3$ at $x = -1$.",
-    "targets": { "dy/dx": 6.0 },
-    "required_units": [""]
+    "id": "EngEco_1_16",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Is $2,850 cash better than $3,000 in 12 months if money is worth 7% compounded quarterly? Find the PV of the $3,000.",
+    "targets": { "PV": 2798.92 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_17",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "If $f(x) = x \\ln(x)$, find $f'(e)$.",
-    "targets": { "f'(e)": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_1_17",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "How many years will it take for $500 to triple at 8% interest compounded annually?",
+    "targets": { "Years": 14.27 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_1_18",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Calculate $\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2}$.",
-    "targets": { "Limit": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_1_18",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the sinking fund payment required to accumulate $10,000 in 5 years at 8% interest.",
+    "targets": { "Payment": 1704.56 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_19",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the slope of $y = e^{x^2}$ at $x = 1$. (Use $e = 2.718$)",
-    "targets": { "slope": 5.436 },
+    "id": "EngEco_1_19",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "What is the capital recovery factor for 10 years at 12% interest?",
+    "targets": { "CRF": 0.177 },
     "required_units": [""]
-  },
-  {
-    "id": "CAL_1_20",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Determine the time $t$ when the velocity is zero for a particle with position $s(t) = t^2 - 6t + 8$.",
-    "targets": { "t": 3.0 },
-    "required_units": ["s"]
   },
   {
-    "id": "CAL_1_21",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate $\\lim_{x \to 1} \\frac{\\ln(x)}{x - 1}$.",
-    "targets": { "Limit": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_20",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the present worth of a perpetual annual payment of $500 at 10% interest.",
+    "targets": { "PW": 5000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_22",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find $dy/dx$ for $y = \\frac{x}{x+1}$ at $x = 1$.",
-    "targets": { "dy/dx": 0.25 },
-    "required_units": [""]
+    "id": "EngEco_1_21",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the future value of $1,000 in 20 years at 0.5% interest compounded monthly.",
+    "targets": { "FV": 1104.90 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_23",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the derivative of $f(x) = 5^x$ at $x = 0$. (Use $\\ln 5 = 1.609$)",
-    "targets": { "f'(0)": 1.609 },
-    "required_units": [""]
+    "id": "EngEco_1_22",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "A loan of $5,000 is to be repaid in 12 equal monthly installments at 1% interest per month. Find the payment.",
+    "targets": { "Payment": 444.24 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_24",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "What is the derivative of $y = \\arcsin(x)$ at $x = 0$?",
-    "targets": { "dy/dx": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_23",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "What is the value of an investment after 10 years if $100 is deposited monthly at 12% nominal interest?",
+    "targets": { "FV": 23003.87 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_25",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the local minimum of $f(x) = x^2 - 4x + 7$.",
-    "targets": { "f_min": 3.0 },
-    "required_units": [""]
+    "id": "EngEco_1_24",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the present worth of a series of 8 payments starting at $1,000 and increasing by $100 each year at 10% interest.",
+    "targets": { "PW": 6928.32 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_26",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the slope of $y = x^3$ at $x = -2$.",
-    "targets": { "slope": 12.0 },
-    "required_units": [""]
+    "id": "EngEco_1_25",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the future worth of $2,000 deposited today and $1,000 deposited 2 years from now at 8% interest, at the end of 4 years.",
+    "targets": { "FW": 3886.11 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_27",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Evaluate $\\lim_{x \to 0} \\frac{\\tan(x)}{x}$.",
-    "targets": { "Limit": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_1_26",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "How much should be deposited now to have $10,000 in 15 years at 6% compounded continuously?",
+    "targets": { "PV": 4065.70 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_28",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find $dy/dx$ if $y = \\cos(x^2)$ at $x = \\sqrt{\\pi/2}$.",
-    "targets": { "dy/dx": -2.507 },
-    "required_units": [""]
+    "id": "EngEco_1_27",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the equivalent annual cost of a $20,000 initial investment with no salvage value over 5 years at 15% interest.",
+    "targets": { "EAC": 5966.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_1_29",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Calculate the derivative of $f(x) = \\sqrt{x^2 + 9}$ at $x = 4$.",
-    "targets": { "f'(4)": 0.8 },
-    "required_units": [""]
+    "id": "EngEco_1_28",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "What is the doubling time for an investment growing at 7.2% per year?",
+    "targets": { "Years": 10.0 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_1_30",
-    "category": "Mathematics: Calculus - Derivatives",
-    "statement": "Find the equation of the tangent line slope for $y = 2/x$ at $x = 2$.",
-    "targets": { "slope": -0.5 },
-    "required_units": [""]
+    "id": "EngEco_1_29",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Calculate the effective rate for 12% nominal interest compounded daily (365 days).",
+    "targets": { "Rate": 12.75 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_2_1",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate the definite integral $\\int_1^2 (x^2 - 1) dx$.",
-    "targets": { "Value": 1.333 },
-    "required_units": [""]
+    "id": "EngEco_1_30",
+    "category": "Engineering Economy - Time Value of Money",
+    "statement": "Find the present value of $200 received every month for 2 years at 12% nominal interest.",
+    "targets": { "PV": 4248.68 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_2",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the area under the curve $f(x) = \\sin(x)$ from $x = 0$ to $x = \\pi$.",
-    "targets": { "Area": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_2_1",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Project A costs $10,000 with annual benefits of $3,000 for 5 years. Find the Net Present Value at 10% interest.",
+    "targets": { "NPV": 1372.36 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_3",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Calculate the average value of $f(x) = 3x^2$ on the interval $[0, 2]$.",
-    "targets": { "f_avg": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_2_2",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Compare refurbishing an elevator for $55,000 (20-year life) vs replacing for $140,000 (50-year life) at 4% interest. Find the EUAW of refurbishing.",
+    "targets": { "EUAW": -4047.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_4",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 e^{2x} dx$. (Use $e = 2.718$)",
-    "targets": { "Value": 3.195 },
-    "required_units": [""]
+    "id": "EngEco_2_3",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "An asset costs $20,000 with a $2,000 salvage value after 20 years. Find its equivalent annual cost at 4% interest.",
+    "targets": { "EAC": 1411.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_5",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the area between the curves $y = x$ and $y = x^2$ from $x = 0$ to $x = 1$.",
-    "targets": { "Area": 0.167 },
+    "id": "EngEco_2_4",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the Benefit-Cost Ratio for a project with $1M initial cost, $200k annual benefit for 10 years at 8% interest.",
+    "targets": { "BCR": 1.34 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_6",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate the integral $\\int_0^{\\pi/2} \\cos(x) dx$.",
-    "targets": { "Value": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_2_5",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the payback period for a $5,000 investment with $1,200 annual savings.",
+    "targets": { "Years": 4.17 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_2_7",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the definite integral $\\int_1^e \\frac{1}{x} dx$.",
-    "targets": { "Value": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_2_6",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Alternative X has a PW of $500, Alternative Y has a PW of $750. What is the incremental PW (Y-X)?",
+    "targets": { "Incremental PW": 250.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_8",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 (4x^3 + 3x^2) dx$.",
-    "targets": { "Value": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_2_7",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the capitalized cost of a bridge costing $30,000 initially and $1,000 maintenance every year at 4% interest.",
+    "targets": { "Capitalized Cost": 55000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_9",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Calculate the volume of the solid generated by revolving $y = x$ about the x-axis from $x=0$ to $x=2$. (Use $\\pi = 3.142$)",
-    "targets": { "V": 8.378 },
-    "required_units": [""]
+    "id": "EngEco_2_8",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the IRR for a $1,000 investment that returns $1,210 in 2 years.",
+    "targets": { "IRR": 10.0 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_2_10",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate the integral $\\int x e^{x^2} dx$ from $x=0$ to $x=1$.",
-    "targets": { "Value": 0.859 },
-    "required_units": [""]
+    "id": "EngEco_2_9",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "A project has a BCR of 1.2. If the total equivalent costs are $50,000, what are the total equivalent benefits?",
+    "targets": { "Benefits": 60000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_11",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the area under $y = 1/x^2$ from $x=1$ to $x=2$.",
-    "targets": { "Area": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_2_10",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Machine Q costs $7,000 to lease annually. Machine R costs $30,000 to buy with a 10-year life. At 5% interest, find the annual cost of Machine R.",
+    "targets": { "Annual Cost": 3885.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_12",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^2 (x-1)^2 dx$.",
-    "targets": { "Value": 0.667 },
+    "id": "EngEco_2_11",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "If MARR is 10% and a project IRR is 12%, is the project acceptable? (1 for Yes, 0 for No)",
+    "targets": { "Status": 1.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_13",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the integral of $f(x) = \\sec^2(x)$ from $x=0$ to $x=\\pi/4$.",
-    "targets": { "Value": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_2_12",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the Present Worth of a process costing $15,000 now and $2,000 annually for 5 years at 8% interest.",
+    "targets": { "PW": -22985.42 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_14",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 \\frac{1}{1+x^2} dx$. (Result in radians, use $\\pi = 3.142$)",
-    "targets": { "Value": 0.785 },
+    "id": "EngEco_2_13",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the incremental B/C ratio if Alt B adds $200k in benefits and $150k in cost over Alt A.",
+    "targets": { "Incremental BCR": 1.33 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_15",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Calculate the work done by a force $F(x) = 10x$ moving an object from $x=0$ to $x=4$.",
-    "targets": { "Work": 80.0 },
-    "required_units": ["j"]
+    "id": "EngEco_2_14",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "A pump costs $10k and saves $3k/yr. Using a 5-year study period at 10% interest, find the NPV.",
+    "targets": { "NPV": 1372.36 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_16",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the average value of $f(x) = \\sin(x)$ on $[0, \\pi]$.",
-    "targets": { "f_avg": 0.637 },
-    "required_units": [""]
+    "id": "EngEco_2_15",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the salvage value required to make a $50k asset have an EAC of $10k over 10 years at 10% interest.",
+    "targets": { "Salvage": 30085.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_17",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 x \\sqrt{x^2+1} dx$.",
-    "targets": { "Value": 0.609 },
+    "id": "EngEco_2_16",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Compare Alt 1 (PW=$12k) and Alt 2 (PW=$15k). Which is selected? (Answer with 1 or 2)",
+    "targets": { "Selection": 2.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_18",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the x-coordinate of the centroid ($\\bar{x}$) for the area under $y=x$ from $x=0$ to $x=1$.",
-    "targets": { "x_bar": 0.667 },
-    "required_units": [""]
+    "id": "EngEco_2_17",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "An investment of $2k returns $500/yr for 6 years. Find the NPV at 12%.",
+    "targets": { "NPV": 55.70 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_19",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 (2x+1)^3 dx$.",
-    "targets": { "Value": 10.0 },
-    "required_units": [""]
+    "id": "EngEco_2_18",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the annual savings needed to justify a $25k machine over 8 years at 15% MARR.",
+    "targets": { "Savings": 5571.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_20",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Determine the value of $\\int_1^4 \\sqrt{x} dx$.",
-    "targets": { "Value": 4.667 },
-    "required_units": [""]
+    "id": "EngEco_2_19",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "A bridge has a maintenance cost of $5k every 5 years. Find the equivalent annual cost at 10%.",
+    "targets": { "Annual Cost": 819.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_21",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 x e^x dx$ using integration by parts.",
-    "targets": { "Value": 1.0 },
+    "id": "EngEco_2_20",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "If the BCR of a public project is 0.85, is it recommended? (1 for Yes, 0 for No)",
+    "targets": { "Recommendation": 0.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_22",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the area under $y = e^{-x}$ from $x=0$ to $x=\\infty$.",
-    "targets": { "Area": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_2_21",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Two projects have lives of 3 and 4 years. What is the LCM study period?",
+    "targets": { "Period": 12.0 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_2_23",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^{\\pi} \\sin^2(x) dx$. (Use $\\pi = 3.142$)",
-    "targets": { "Value": 1.571 },
+    "id": "EngEco_2_22",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Project J has EAC of $4k, Project K has EAC of $3.5k (costs). Which is cheaper? (J=1, K=2)",
+    "targets": { "Selection": 2.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_24",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the integral $\\int \\frac{\\ln(x)}{x} dx$ from $x=1$ to $x=e$.",
-    "targets": { "Value": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_2_23",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the Future Worth of $10k annual benefits for 5 years at 7%.",
+    "targets": { "FW": 57507.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_25",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Calculate $\\int_2^3 (x^3 - 2x) dx$.",
-    "targets": { "Value": 11.25 },
-    "required_units": [""]
+    "id": "EngEco_2_24",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the capitalized cost of an infinite project with $1M initial and $50k annual cost at 5%.",
+    "targets": { "CC": 2000000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_26",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the area under $y = x^3$ from $x=0$ to $x=2$.",
-    "targets": { "Area": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_2_25",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "An initial investment of $15k leads to $4k/yr for 5 years. Find the NPV at 12%.",
+    "targets": { "NPV": -581.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_2_27",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^1 \\frac{x}{x^2+1} dx$.",
-    "targets": { "Value": 0.347 },
+    "id": "EngEco_2_26",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Find the BCR for a project where PW(Benefits)=$150k and PW(Costs)=$120k.",
+    "targets": { "BCR": 1.25 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_28",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Find the volume of a sphere with radius $r=1$ using integration. (Use $\\pi = 3.142$)",
-    "targets": { "V": 4.189 },
-    "required_units": [""]
+    "id": "EngEco_2_27",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Calculate the IRR for a project costing $5k returning $7k in 3 years.",
+    "targets": { "IRR": 11.87 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_2_29",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Evaluate $\\int_0^{\\pi/4} \\tan(x) \\sec^2(x) dx$.",
-    "targets": { "Value": 0.5 },
+    "id": "EngEco_2_28",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "Two options: A (EAC=$2k) and B (EAC=$2.5k). Select the best (Answer 1 for A, 2 for B).",
+    "targets": { "Selection": 1.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_2_30",
-    "category": "Mathematics: Calculus - Integrals",
-    "statement": "Calculate $\\int_0^2 |x-1| dx$.",
-    "targets": { "Value": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_2_29",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "What is the Present Worth of $1k/yr for 10 years at 0% interest?",
+    "targets": { "PW": 10000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_1",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the partial derivative $\\frac{\\partial f}{\\partial x}$ for $f(x, y) = x^2y + y^3$ at $(2, 1)$.",
-    "targets": { "df/dx": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_2_30",
+    "category": "Engineering Economy - Comparison of Alternatives",
+    "statement": "An investment of $10k returns $2k/yr forever. Find the IRR.",
+    "targets": { "IRR": 20.0 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_3_2",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Determine $\\frac{\\partial f}{\\partial y}$ for $f(x, y) = x^2y + y^3$ at $(2, 1)$.",
-    "targets": { "df/dy": 7.0 },
-    "required_units": [""]
+    "id": "EngEco_3_1",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the straight-line depreciation for a $6,000 asset with a 5-year life and $1,000 salvage.",
+    "targets": { "Annual Depreciation": 1000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_3",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find $\\frac{\\partial z}{\\partial x}$ if $z = e^{xy}$ at the point $(1, 2)$. (Use $e = 2.718$)",
-    "targets": { "dz/dx": 14.778 },
-    "required_units": [""]
+    "id": "EngEco_3_2",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the book value after 2 years for a $6,000 asset with 5-year life and $1,000 salvage (Straight-line).",
+    "targets": { "Book Value": 4000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_4",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Calculate the first partial derivative with respect to $x$ for $f(x, y) = \\ln(x^2 + y^2)$ at $(1, 1)$.",
-    "targets": { "f_x": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_3_3",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "A tool costs $300. With a 35% tax rate, find the tax savings from a $100 depreciation expense.",
+    "targets": { "Tax Savings": 35.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_5",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the second partial derivative $\\frac{\\partial^2 f}{\\partial x^2}$ for $f(x, y) = x^3 y^2$.",
-    "targets": { "f_xx": "6xy^2" },
-    "required_units": [""]
+    "id": "EngEco_3_4",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "If a company has a 25% tax rate and $100k taxable income, find the net income after tax.",
+    "targets": { "Net Income": 75000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_6",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Evaluate $\\frac{\\partial z}{\\partial y}$ for $z = \\sin(x) \\cos(y)$ at $(\\pi/2, 0)$.",
-    "targets": { "dz/dy": 0.0 },
-    "required_units": [""]
+    "id": "EngEco_3_5",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the SOYD depreciation for Year 1 of a $4,600 asset with 4-year life and $600 salvage.",
+    "targets": { "Depreciation": 1600.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_7",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Using the Ideal Gas Law $P = \\frac{nRT}{V}$, find $\\frac{\\partial P}{\\partial V}$ if $n, R, T$ are constant.",
-    "targets": { "dP/dV": "-nRT/V^2" },
-    "required_units": [""]
+    "id": "EngEco_3_6",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the average cost per unit if producing 400k units costs $3.2M.",
+    "targets": { "Average Cost": 8.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_8",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the mixed partial derivative $\\frac{\\partial^2 f}{\\partial x \\partial y}$ for $f(x, y) = x^2 y + 5y$.",
-    "targets": { "f_xy": "2x" },
-    "required_units": [""]
+    "id": "EngEco_3_7",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the Year 1 CCA for a $450k asset in a 45% class (using half-year rule).",
+    "targets": { "CCA": 101250.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_9",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Calculate the gradient magnitude $|\\nabla f|$ for $f(x, y) = 3x + 4y$.",
-    "targets": { "magnitude": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_3_8",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "An asset is sold for $85k when its book value is $70k. Find the taxable gain.",
+    "targets": { "Gain": 15000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_10",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Determine the total differential $dz$ for $z = x^2 + y^2$ when $dx = 0.1, dy = 0.2$ at $(1, 1)$.",
-    "targets": { "dz": 0.6 },
-    "required_units": [""]
+    "id": "EngEco_3_9",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the depletion charge for Year 1 if an ore body costing $1M contains 500k tons and 50k tons are mined.",
+    "targets": { "Depletion": 100000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_11",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find $\\frac{\\partial f}{\\partial x}$ for $f(x, y) = \\frac{x}{y}$ at $(4, 2)$.",
-    "targets": { "f_x": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_3_10",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the ATCF if BTCF is $10k, depreciation is $2k, and tax rate is 30%.",
+    "targets": { "ATCF": 7600.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_12",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find $\\frac{\\partial f}{\\partial y}$ for $f(x, y) = \\frac{x}{y}$ at $(4, 2)$.",
-    "targets": { "f_y": -1.0 },
-    "required_units": [""]
+    "id": "EngEco_3_11",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "What is the book value of an asset after SL depreciation if initial cost=salvage?",
+    "targets": { "BV": 0.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_13",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Evaluate the partial derivative of $f(x, y) = x^y$ with respect to $x$ at $(2, 3)$.",
-    "targets": { "f_x": 12.0 },
-    "required_units": [""]
+    "id": "EngEco_3_12",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the DDB depreciation rate for a 10-year life asset.",
+    "targets": { "Rate": 20.0 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_3_14",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "For $f(x, y) = e^{x-y}$, find the value of $\\frac{\\partial f}{\\partial x} + \\frac{\\partial f}{\\partial y}$.",
-    "targets": { "sum": 0.0 },
-    "required_units": [""]
+    "id": "EngEco_3_13",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the Year 1 depreciation for a $10k asset using DDB with a 5-year life.",
+    "targets": { "Depreciation": 4000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_15",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Determine $\\frac{\\partial z}{\\partial x}$ if $x^2 + y^2 + z^2 = 9$ (Implicit differentiation) at $(1, 2, 2)$.",
-    "targets": { "dz/dx": -0.5 },
-    "required_units": [""]
+    "id": "EngEco_3_14",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "If a sunk cost is $5k, how much of it should be included in new analysis?",
+    "targets": { "Amount": 0.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_16",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the slope in the x-direction for the surface $z = x^2 - y^2$ at $(2, 1)$.",
-    "targets": { "slope_x": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_3_15",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the unit depletion rate for a $2M timber tract with 1M board feet.",
+    "targets": { "Rate": 2.0 },
+    "required_units": ["$/unit"]
   },
   {
-    "id": "CAL_3_17",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "If $f(x, y, z) = xy + yz + zx$, find $\\frac{\\partial f}{\\partial z}$ at $(1, 2, 3)$.",
-    "targets": { "f_z": 3.0 },
-    "required_units": [""]
+    "id": "EngEco_3_16",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate federal tax on $100k profit at a flat 21% rate.",
+    "targets": { "Tax": 21000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_18",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Calculate the rate of change of $P$ with respect to $T$ in $PV = nRT$ if $V$ is constant ($n=1, R=8.314, V=0.1$).",
-    "targets": { "dP/dT": 83.14 },
-    "required_units": ["Pa/K"]
+    "id": "EngEco_3_17",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the variable cost per unit if total cost is $50k, fixed cost is $20k, and units are 6k.",
+    "targets": { "VC": 5.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_19",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the second partial derivative $\\frac{\\partial^2 z}{\\partial y^2}$ for $z = x^2 y^3$.",
-    "targets": { "z_yy": "6x^2y" },
+    "id": "EngEco_3_18",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "An asset cost $12k and has $2k salvage. Find the SOYD denominator for a 4-year life.",
+    "targets": { "Denominator": 10.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_3_20",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "For $f(x, y) = \\sqrt{x^2 + y^2}$, calculate $f_x$ at $(3, 4)$.",
-    "targets": { "f_x": 0.6 },
-    "required_units": [""]
+    "id": "EngEco_3_19",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the effective tax rate if federal is 21% and state is 5% (deductible).",
+    "targets": { "Rate": 24.95 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_3_21",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Determine $\\frac{\\partial f}{\\partial x}$ for $f(x, y) = y \\sin(xy)$ at $(1, \\pi)$.",
-    "targets": { "f_x": -9.87 },
-    "required_units": [""]
+    "id": "EngEco_3_20",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the book value after 1 year for $10k cost, 20% declining balance rate.",
+    "targets": { "BV": 8000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_22",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the critical point $(\\bar{x}, \\bar{y})$ of $f(x, y) = x^2 + y^2 - 4x + 6y$. (Answer for x only)",
-    "targets": { "x": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_3_21",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "If Gross Income is $200k and Expenses are $120k, find taxable income (no dep).",
+    "targets": { "TI": 80000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_23",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Calculate $f_y$ at $(0, 0)$ for $f(x, y) = e^x \\cos(y)$.",
-    "targets": { "f_y": 0.0 },
-    "required_units": [""]
+    "id": "EngEco_3_22",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the Year 3 SL depreciation for a $50k asset with $10k salvage and 10-year life.",
+    "targets": { "Depreciation": 4000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_24",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the 전미분(Total Differential) $df$ for $f = x^2 y$ at $x=2, y=3$ with $dx=0.01, dy=0.02$.",
-    "targets": { "df": 0.2 },
-    "required_units": [""]
+    "id": "EngEco_3_23",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate the break-even volume if Price=$20, Variable Cost=$12, Fixed Cost=$40k.",
+    "targets": { "Volume": 5000.0 },
+    "required_units": ["units"]
   },
   {
-    "id": "CAL_3_25",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "If $u = x^2 + y^2$ and $x=r\\cos\\theta, y=r\\sin\\theta$, find $\\frac{\\partial u}{\\partial r}$.",
-    "targets": { "du/dr": "2r" },
-    "required_units": [""]
+    "id": "EngEco_3_24",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the after-tax MARR if pre-tax MARR is 15% and tax rate is 30%.",
+    "targets": { "AT-MARR": 10.5 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_3_26",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the Laplace operator $\\nabla^2 f = f_{xx} + f_{yy}$ for $f(x, y) = x^2 - y^2$.",
-    "targets": { "result": 0.0 },
-    "required_units": [""]
+    "id": "EngEco_3_25",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "An asset with $5k BV is sold for $3k. Find the tax credit at 40% tax rate.",
+    "targets": { "Credit": 800.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_27",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Evaluate $\\frac{\\partial^2 z}{\\partial x \\partial y}$ for $z = \\ln(xy)$.",
-    "targets": { "z_xy": 0.0 },
-    "required_units": [""]
+    "id": "EngEco_3_26",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate MACRS Year 1 depreciation for a 5-year asset ($10k) at 20% rate.",
+    "targets": { "Depreciation": 2000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_28",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Determine the slope of $z = 10 - x^2 - 2y^2$ in the y-direction at $(1, 1)$.",
-    "targets": { "slope_y": -4.0 },
-    "required_units": [""]
+    "id": "EngEco_3_27",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Find the total life cycle cost: $10k purchase, $2k/yr operating for 5 years (no interest).",
+    "targets": { "LCC": 20000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_29",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Calculate $f_x(1, 1)$ if $f(x, y) = (x+y)^2$.",
-    "targets": { "f_x": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_3_28",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "If price decreases by $2 and volume increases by 1000, what is the incremental revenue?",
+    "targets": { "Revenue": -1000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_3_30",
-    "category": "Mathematics: Calculus - Partial Derivatives",
-    "statement": "Find the partial derivative of $V = \\pi r^2 h$ with respect to $r$ at $r=2, h=5$. (Use $\\pi = 3.14$)",
-    "targets": { "dV/dr": 62.8 },
-    "required_units": [""]
+    "id": "EngEco_3_29",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "Calculate taxable income: $500k Revenue, $300k O&M, $50k Depreciation.",
+    "targets": { "TI": 150000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_1",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the magnitude of the vector $\\mathbf{A} = 3\\mathbf{i} + 4\\mathbf{j}$.",
-    "targets": { "magnitude": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_3_30",
+    "category": "Engineering Economy - Cost and Financial Analysis",
+    "statement": "What is the capital gain tax on $20k gain at 15% rate?",
+    "targets": { "Tax": 3000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_2",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the dot product of $\\mathbf{A} = [2, 3]$ and $\\mathbf{B} = [4, -1]$.",
-    "targets": { "dot": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_4_1",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the EMV for a process with 50% chance of $2M profit and 50% chance of $1M profit.",
+    "targets": { "EMV": 1500000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_3",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the cross product $\\mathbf{A} \\times \\mathbf{B}$ magnitude if $\\mathbf{A} = [1, 0, 0]$ and $\\mathbf{B} = [0, 1, 0]$.",
-    "targets": { "magnitude": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_4_2",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the expected profit: 30% chance of $100k, 70% chance of $40k.",
+    "targets": { "Expected Profit": 58000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_4",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Determine the angle (in degrees) between $\\mathbf{A} = [1, 1]$ and $\\mathbf{B} = [1, 0]$.",
-    "targets": { "theta": 45.0 },
-    "required_units": ["deg"]
+    "id": "EngEco_4_3",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "A project has a 10% risk of a $50k loss. What is the risk-adjusted cost?",
+    "targets": { "Cost": 5000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_5",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the unit vector in the direction of $\\mathbf{A} = 6\\mathbf{i} + 8\\mathbf{j}$. (Answer the i-component only)",
-    "targets": { "u_i": 0.6 },
-    "required_units": [""]
+    "id": "EngEco_4_4",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the range of NPW if base is $10k and sensitivity is +/- $2k.",
+    "targets": { "Max NPW": 12000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_6",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the dot product of $\\mathbf{A} = 2\\mathbf{i} + 5\\mathbf{j} - 3\\mathbf{k}$ and $\\mathbf{B} = 4\\mathbf{i} - 2\\mathbf{j} + 1\\mathbf{k}$.",
-    "targets": { "dot": -5.0 },
+    "id": "EngEco_4_5",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the probability of success needed to break even on a $100k investment with $500k success payoff.",
+    "targets": { "Probability": 0.2 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_7",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the scalar projection of $\\mathbf{A} = [4, 1]$ onto $\\mathbf{B} = [1, 0]$.",
-    "targets": { "proj": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_4_6",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the expected cost of 3 outcomes: $10k (0.2), $20k (0.5), $30k (0.3).",
+    "targets": { "Expected Cost": 21000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_8",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Determine the magnitude of vector $\\mathbf{V} = \\mathbf{i} + \\mathbf{j} + \\mathbf{k}$.",
-    "targets": { "magnitude": 1.732 },
-    "required_units": [""]
+    "id": "EngEco_4_7",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "What is the value of perfect information if EMV with info is $120k and EMV without is $100k?",
+    "targets": { "EVPI": 20000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_9",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the work done ($W = \\mathbf{F} \\cdot \\mathbf{d}$) if $\\mathbf{F} = [10, 20]$ N and $\\mathbf{d} = [3, 2]$ m.",
-    "targets": { "W": 70.0 },
-    "required_units": ["j"]
+    "id": "EngEco_4_8",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the standard deviation of a project with variance of 400.",
+    "targets": { "SD": 20.0 },
+    "required_units": [""]
   },
   {
-    "id": "CAL_4_10",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the k-component of the cross product $\\mathbf{A} \\times \\mathbf{B}$ where $\\mathbf{A} = [2, 1, 0]$ and $\\mathbf{B} = [1, 3, 0]$.",
-    "targets": { "k_comp": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_4_9",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the probability-weighted NPW for a 60% success ($50k) and 40% failure (-$10k).",
+    "targets": { "NPW": 26000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_11",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "If $\\mathbf{A} \\cdot \\mathbf{B} = 0$, what is the angle between the two vectors in degrees?",
-    "targets": { "theta": 90.0 },
-    "required_units": ["deg"]
+    "id": "EngEco_4_10",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "A project is sensitive to labor cost. If labor increases by 10%, NPW drops by $5k. Find sensitivity ratio ($ in NPW / % in labor).",
+    "targets": { "Ratio": 500.0 },
+    "required_units": ["$/%"]
   },
   {
-    "id": "CAL_4_12",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the magnitude of $2\\mathbf{A}$ if $\\mathbf{A} = [3, -4]$.",
-    "targets": { "magnitude": 10.0 },
+    "id": "EngEco_4_11",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the breakeven probability for a project: Cost=$20k, Success Payoff=$100k.",
+    "targets": { "P": 0.2 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_13",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the distance between points $P_1(1, 2, 3)$ and $P_2(4, 6, 3)$.",
-    "targets": { "distance": 5.0 },
+    "id": "EngEco_4_12",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Expected value of a roll of a fair 6-sided die.",
+    "targets": { "EV": 3.5 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_14",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Determine the value of $k$ such that $\\mathbf{A} = [2, k]$ and $\\mathbf{B} = [4, 2]$ are perpendicular.",
-    "targets": { "k": -4.0 },
-    "required_units": [""]
+    "id": "EngEco_4_13",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "If a chance node has two branches: $1M (0.7) and $0 (0.3), find the node value.",
+    "targets": { "Value": 700000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_15",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the area of a parallelogram spanned by $\\mathbf{A} = [2, 0, 0]$ and $\\mathbf{B} = [0, 3, 0]$.",
-    "targets": { "area": 6.0 },
+    "id": "EngEco_4_14",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the coefficient of variation if Mean=$100 and SD=$15.",
+    "targets": { "CV": 0.15 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_16",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the sum of vectors $\\mathbf{A} = [1, 2, 3]$ and $\\mathbf{B} = [4, 5, 6]$. (Answer the magnitude)",
-    "targets": { "magnitude": 12.45 },
-    "required_units": [""]
+    "id": "EngEco_4_15",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Determine the expected life of a machine: 5 yrs (0.4), 8 yrs (0.6).",
+    "targets": { "Life": 6.8 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_4_17",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "What is the dot product of a unit vector with itself?",
-    "targets": { "result": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_4_16",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "A project NPW is $50k. A 20% cost overrun reduces it to $30k. Find the sensitivity % change in NPW.",
+    "targets": { "Change": -40.0 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_4_18",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate $|\\mathbf{A} - \\mathbf{B}|$ if $\\mathbf{A} = [5, 10]$ and $\\mathbf{B} = [2, 6]$.",
-    "targets": { "magnitude": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_4_17",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the expected annual benefit: $5k (high prob 0.7), $2k (low prob 0.3).",
+    "targets": { "Benefit": 4100.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_19",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the gradient vector $\\nabla f$ of $f(x, y) = x^2 + y^2$ at $(1, 2)$. (Answer the magnitude)",
-    "targets": { "magnitude": 4.472 },
+    "id": "EngEco_4_18",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the probability of 'Not Success' if probability of success is 0.82.",
+    "targets": { "P": 0.18 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_20",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the direction cosines $\\cos(\\alpha)$ for vector $\\mathbf{A} = 3\\mathbf{i} + 4\\mathbf{j}$.",
-    "targets": { "cos_alpha": 0.6 },
-    "required_units": [""]
+    "id": "EngEco_4_19",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "An oil well has a 1 in 5 chance of hitting oil ($2M value). Find the expected value.",
+    "targets": { "EV": 400000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_21",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Determine the cross product $\\mathbf{j} \\times \\mathbf{i}$.",
-    "targets": { "result": -1.0 },
-    "required_units": ["k"]
+    "id": "EngEco_4_20",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Expected number of defective parts in 1000 if defect rate is 2.5%.",
+    "targets": { "Parts": 25.0 },
+    "required_units": ["units"]
   },
   {
-    "id": "CAL_4_22",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the scalar triple product $\\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C})$ if $\\mathbf{A}=[1,0,0], \\mathbf{B}=[0,1,0], \\mathbf{C}=[0,0,1]$.",
-    "targets": { "result": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_4_21",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the risk-weighted revenue: $500k (0.6), $400k (0.3), $100k (0.1).",
+    "targets": { "Revenue": 430000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_23",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the magnitude of force $\\mathbf{F} = [2, -3, 6]$ N.",
-    "targets": { "F": 7.0 },
-    "required_units": ["n"]
+    "id": "EngEco_4_22",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "If a project has a 5% chance of failing and costing $1M, find the expected loss.",
+    "targets": { "Loss": 50000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_24",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the angle between $\\mathbf{A} = [1, 2, 2]$ and the z-axis in degrees.",
-    "targets": { "theta": 48.19 },
-    "required_units": ["deg"]
+    "id": "EngEco_4_23",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the expected NPV of 2 years: Yr1=$10k (0.8), Yr2=$15k (0.5). (No interest)",
+    "targets": { "Total": 15500.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_25",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "If $|\\mathbf{A}|=5$ and $|\\mathbf{B}|=2$, and the angle between them is 60°, find $\\mathbf{A} \\cdot \\mathbf{B}$.",
-    "targets": { "dot": 5.0 },
-    "required_units": [""]
+    "id": "EngEco_4_24",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "A decision tree has a payoff of $80k. Costs are $30k. Find the net payoff.",
+    "targets": { "Net": 50000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_26",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the projection of $\\mathbf{A} = 2\\mathbf{i} + 3\\mathbf{j}$ onto the y-axis.",
-    "targets": { "proj": 3.0 },
-    "required_units": [""]
+    "id": "EngEco_4_25",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the expected return: 10% (0.5 prob), 4% (0.5 prob).",
+    "targets": { "Return": 7.0 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_4_27",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Calculate the magnitude of $\\mathbf{A} \\times \\mathbf{B}$ if $|\\mathbf{A}|=10, |\\mathbf{B}|=2$ and $\\theta = 30^\\circ$.",
-    "targets": { "magnitude": 10.0 },
+    "id": "EngEco_4_26",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "If variance is 25, what is the standard deviation?",
+    "targets": { "SD": 5.0 },
     "required_units": [""]
   },
   {
-    "id": "CAL_4_28",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the unit vector orthogonal to both $\\mathbf{i}$ and $\\mathbf{j}$.",
-    "targets": { "result": 1.0 },
-    "required_units": ["k"]
+    "id": "EngEco_4_27",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Expected utility: 10 utils (0.6), 2 utils (0.4).",
+    "targets": { "Utility": 6.8 },
+    "required_units": ["utils"]
   },
   {
-    "id": "CAL_4_29",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "What is the dot product of $[k, 2]$ and $[2, -1]$ if they are orthogonal?",
-    "targets": { "k": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_4_28",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Calculate the expected salvage value: $2k (0.9), $0 (0.1).",
+    "targets": { "Salvage": 1800.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_4_30",
-    "category": "Mathematics: Calculus - Vector Analysis",
-    "statement": "Find the magnitude of the displacement vector from $(1, 1, 1)$ to $(3, 3, 2)$.",
-    "targets": { "magnitude": 3.0 },
-    "required_units": [""]
+    "id": "EngEco_4_29",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Expected duration of a task: 10 days (0.2), 15 days (0.7), 20 days (0.1).",
+    "targets": { "Days": 14.5 },
+    "required_units": ["days"]
   },
   {
-    "id": "CAL_5_1",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate the double integral $\\int_0^1 \\int_0^2 x dy dx$.",
-    "targets": { "Value": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_4_30",
+    "category": "Engineering Economy - Risk and Uncertainty",
+    "statement": "Find the expected tax: $20k (0.8), $10k (0.2).",
+    "targets": { "Tax": 18000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_2",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Calculate $\\int_0^2 \\int_0^1 (x + y) dx dy$.",
-    "targets": { "Value": 3.0 },
-    "required_units": [""]
+    "id": "EngEco_5_1",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the future value of $10,000 after 10 years at 8% interest compounded continuously.",
+    "targets": { "FV": 22255.41 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_3",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the area of a rectangle with $0 \\le x \\le 3$ and $0 \\le y \\le 4$ using double integration.",
-    "targets": { "Area": 12.0 },
-    "required_units": [""]
+    "id": "EngEco_5_2",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the book value after 6 years for a $500,000 asset using a 30% declining-balance rate.",
+    "targets": { "Book Value": 58824.50 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_4",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_0^x dy dx$.",
-    "targets": { "Value": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_5_3",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the capitalized cost for a project with $1M initial and $50k annual costs at 5%.",
+    "targets": { "CC": 2000000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_5",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the area of a triangle bounded by $y=x$, $x=1$, and $y=0$ using double integrals.",
-    "targets": { "Area": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_5_4",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Determine the recapture if Class 8 assets ($70k balance) are sold for $85k.",
+    "targets": { "Recapture": 15000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_6",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^{\\pi} \\int_0^1 r dr d\\theta$ (Area of a semi-circle with $r=1$). Use $\\pi = 3.142$.",
-    "targets": { "Area": 1.571 },
-    "required_units": [""]
+    "id": "EngEco_5_5",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the annual depreciation for a truck costing $32k with 190,000 km life, if driven 30,000 km this year.",
+    "targets": { "Depreciation": 5052.63 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_7",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the volume under $z = xy$ over the region $0 \\le x \\le 2, 0 \\le y \\le 2$.",
-    "targets": { "Volume": 4.0 },
-    "required_units": [""]
+    "id": "EngEco_5_6",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Adjust a $1,000 cost for 4% inflation over 5 years. Find the future cost.",
+    "targets": { "Future Cost": 1216.65 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_8",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_x^1 dy dx$.",
-    "targets": { "Value": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_5_7",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the present worth of a $100/yr maintenance cost increasing by $50/yr for 5 years at 10%.",
+    "targets": { "PW": 714.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_9",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Calculate the double integral of $f(x,y) = 1$ over a circle of radius $r=2$. Use $\\pi = 3.142$.",
-    "targets": { "Area": 12.568 },
-    "required_units": [""]
+    "id": "EngEco_5_8",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the simple payback period for a $15k energy upgrade saving $3.5k/yr.",
+    "targets": { "Years": 4.29 },
+    "required_units": ["years"]
   },
   {
-    "id": "CAL_5_10",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^2 \\int_0^z \\int_0^y dx dy dz$.",
-    "targets": { "Value": 1.333 },
-    "required_units": [""]
+    "id": "EngEco_5_9",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the geometric gradient series present worth: A1=$1k, g=5%, n=10, i=10%.",
+    "targets": { "PW": 7859.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_11",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the x-coordinate of the centroid ($\\bar{x}$) of a rectangle $0 \\le x \\le 4, 0 \\le y \\le 2$.",
-    "targets": { "x_bar": 2.0 },
-    "required_units": [""]
+    "id": "EngEco_5_10",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the annual lease equivalent of a $50k purchase (10 years, 8% interest).",
+    "targets": { "Lease": 7451.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_12",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the y-coordinate of the centroid ($\\bar{y}$) of the same rectangle $0 \\le x \\le 4, 0 \\le y \\le 2$.",
-    "targets": { "y_bar": 1.0 },
-    "required_units": [""]
+    "id": "EngEco_5_11",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the IRR of a $10k investment returning $3k/yr for 5 years.",
+    "targets": { "IRR": 15.24 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_13",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Calculate the polar integral $\\int_0^{2\\pi} \\int_0^2 r dr d\\theta$. Use $\\pi = 3.142$.",
-    "targets": { "Value": 12.568 },
-    "required_units": [""]
+    "id": "EngEco_5_12",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate capitalized cost for a road: $2M initial, $100k every 10 yrs at 6%.",
+    "targets": { "CC": 2126417.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_14",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_0^1 (x^2 + y^2) dx dy$.",
-    "targets": { "Value": 0.667 },
-    "required_units": [""]
+    "id": "EngEco_5_13",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the book value of a $20k asset after 3 years using 150% DB (10-year life).",
+    "targets": { "BV": 12282.50 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_15",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the volume of a cube with side length 2 using triple integration.",
-    "targets": { "Volume": 8.0 },
-    "required_units": [""]
+    "id": "EngEco_5_14",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Convert a 12% nominal rate compounded continuously to an effective annual rate.",
+    "targets": { "Rate": 12.75 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_16",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_0^{1-x} dy dx$.",
-    "targets": { "Value": 0.5 },
-    "required_units": [""]
+    "id": "EngEco_5_15",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the annual cost of a $100k asset with $20k salvage (10 years, 10%).",
+    "targets": { "EAC": 14274.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_17",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the area of the region bounded by $y=x^2$ and $y=x$.",
-    "targets": { "Area": 0.167 },
-    "required_units": [""]
+    "id": "EngEco_5_16",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "An asset with 40% CCA rate cost $10k. Find Year 2 CCA (half-year rule).",
+    "targets": { "CCA": 3200.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_18",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_1^2 \\int_1^2 \\frac{1}{xy} dx dy$. (Use $\\ln 2 = 0.693$)",
-    "targets": { "Value": 0.480 },
-    "required_units": [""]
+    "id": "EngEco_5_17",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate real interest rate if nominal is 8% and inflation is 3%.",
+    "targets": { "Real Rate": 4.85 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_19",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the moment of inertia $I_x = \\iint y^2 dA$ for a rectangle $0 \\le x \\le 1, 0 \\le y \\le 3$.",
-    "targets": { "Ix": 9.0 },
-    "required_units": [""]
+    "id": "EngEco_5_18",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the FW of $5k/yr for 20 years at 10%.",
+    "targets": { "FW": 286375.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_20",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^3 \\int_0^2 4 dx dy$.",
-    "targets": { "Value": 24.0 },
-    "required_units": [""]
+    "id": "EngEco_5_19",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "If a project has NPW of $1k at 10% and -$1k at 15%, find the IRR by interpolation.",
+    "targets": { "IRR": 12.5 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_21",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Calculate the mass of a plate $0 \\le x \\le 1, 0 \\le y \\le 1$ with density $\\rho(x,y) = x+y$.",
-    "targets": { "Mass": 1.0 },
-    "required_units": ["kg"]
+    "id": "EngEco_5_20",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the unit cost of production: $500k fixed, $2/unit variable, 100k units.",
+    "targets": { "Unit Cost": 7.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_22",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the volume under $z = 1 - x - y$ in the first octant.",
-    "targets": { "Volume": 0.167 },
-    "required_units": [""]
+    "id": "EngEco_5_21",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the BV after 5 years for $100k cost, $0 salvage, SL depreciation (10-year life).",
+    "targets": { "BV": 50000.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_23",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^{\\pi/2} \\int_0^{\\cos(\\theta)} r dr d\\theta$.",
-    "targets": { "Value": 0.196 },
-    "required_units": [""]
+    "id": "EngEco_5_22",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "A machine cost $40k. Yearly benefit is $10k. Life is 6 years. Find NPV at 10%.",
+    "targets": { "NPV": 3553.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_24",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the area between $y=\\sqrt{x}$ and $y=x^2$ using double integration.",
-    "targets": { "Area": 0.333 },
-    "required_units": [""]
+    "id": "EngEco_5_23",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the sinking fund to get $1M in 30 years at 7%.",
+    "targets": { "Payment": 10586.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_25",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_0^1 \\int_0^1 (x+y+z) dx dy dz$.",
-    "targets": { "Value": 1.5 },
-    "required_units": [""]
+    "id": "EngEco_5_24",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the present worth of $10k in 5 years at 12% compounded monthly.",
+    "targets": { "PW": 5504.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_26",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the area of a circle $x^2 + y^2 = 9$ using polar coordinates. Use $\\pi = 3.142$.",
-    "targets": { "Area": 28.278 },
-    "required_units": [""]
+    "id": "EngEco_5_25",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "An investment doubles in 5 years. What is the annual interest rate?",
+    "targets": { "Rate": 14.87 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_27",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_1^2 \\int_0^x y dy dx$.",
-    "targets": { "Value": 1.167 },
-    "required_units": [""]
+    "id": "EngEco_5_26",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the annual series equivalent to a $500 gradient for 10 years at 10%.",
+    "targets": { "Amount": 1862.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_28",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Calculate the polar moment of inertia $J_o = \\iint (x^2 + y^2) dA$ for a circle of radius $R=1$. Use $\\pi = 3.142$.",
-    "targets": { "Jo": 1.571 },
-    "required_units": [""]
+    "id": "EngEco_5_27",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the effective rate for 18% compounded monthly.",
+    "targets": { "Rate": 19.56 },
+    "required_units": ["%"]
   },
   {
-    "id": "CAL_5_29",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Evaluate $\\int_0^1 \\int_0^1 e^{x+y} dx dy$. (Use $e=2.718$)",
-    "targets": { "Value": 2.952 },
-    "required_units": [""]
+    "id": "EngEco_5_28",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "A $20k bond pays 6% annually. If market rate is 8%, find the bond price (10 years).",
+    "targets": { "Price": 17316.0 },
+    "required_units": ["$"]
   },
   {
-    "id": "CAL_5_30",
-    "category": "Mathematics: Calculus - Multiple Integrals",
-    "statement": "Find the volume of the region bounded by $z=x^2+y^2$ and the plane $z=1$. Use $\\pi = 3.142$.",
-    "targets": { "Volume": 1.571 },
-    "required_units": [""]
+    "id": "EngEco_5_29",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Find the PW of an annuity: $200/month for 5 years at 6% nominal.",
+    "targets": { "PW": 10345.0 },
+    "required_units": ["$"]
   },
+  {
+    "id": "EngEco_5_30",
+    "category": "Engineering Economy - Specialized Applications",
+    "statement": "Calculate the capitalized cost for a $50k asset replaced every 20 years at 8%.",
+    "targets": { "CC": 63650.0 },
+    "required_units": ["$"]
+  }
 ]
