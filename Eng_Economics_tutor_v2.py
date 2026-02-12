@@ -8,7 +8,7 @@ from logic_v2_GitHub import get_gemini_model, check_numeric_match, analyze_and_s
 # 1. Page Configuration
 st.set_page_config(page_title="TAMUCC Engineering Economy Tutor", layout="wide")
 
-# 2. CSS: Professional UI & Fix for Top Clipping
+# 2. CSS: Professional UI, Fix for Top Clipping, and Layout Consistency
 st.markdown("""
     <style>
     div.stButton > button {
@@ -16,6 +16,7 @@ st.markdown("""
         font-size: 16px;
         font-weight: bold;
     }
+    /* Fixed clipping by increasing top padding and normalizing margins */
     .block-container { 
         padding-top: 3.5rem !important; 
         max-width: 1000px; 
@@ -26,26 +27,36 @@ st.markdown("""
         font-size: 2rem !important;
         line-height: 1.2 !important;
     }
+    /* Aligns the chat input styling with the message container */
     .stChatInput {
         padding-bottom: 20px !important;
+    }
+    /* Scannable info box */
+    .stAlert {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Load Engineering Economics Problems
+# 3. Load Engineering Economics Problems (Matching GitHub File System)
 @st.cache_data
-def load_problems():
-    # Fix: Ensure we look for the correct file and handle paths correctly for Streamlit Cloud
-    file_path = os.path.join(os.getcwd(), 'engineering_economics_problems.json')
+def load_engineering_economics_data():
+    # Use the EXACT case-sensitive filename from your GitHub repository
+    file_name = 'Eng_Economics_problems.json'
+    
+    # Attempt to load from the current working directory (root on Streamlit Cloud)
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_name, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        # Fallback for local/cloud naming discrepancies
-        with open('engineering_economics_problems.json', 'r', encoding='utf-8') as f:
+        # Fallback for different environment pathing
+        base_path = os.path.dirname(__file__)
+        full_path = os.path.join(base_path, file_name)
+        with open(full_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
-PROBLEMS = load_problems()
+PROBLEMS = load_engineering_economics_data()
 
 # 4. Initialize Session State
 if "page" not in st.session_state: st.session_state.page = "landing"
@@ -76,7 +87,7 @@ if st.session_state.user_name is None:
                 st.rerun()
     st.stop()
 
-# --- Page 1: Landing (Category Selection) ---
+# --- Page 1: Main Menu ---
 if st.session_state.page == "landing":
     st.title(f"Welcome, {st.session_state.user_name}!")
     st.info("Select a category to start practice or view a lecture.")
@@ -84,7 +95,6 @@ if st.session_state.page == "landing":
     st.subheader("💡 Choose Your Focus Area")
     col1, col2, col3, col4, col5 = st.columns(5)
     
-    # Updated Categories for Engineering Economy
     categories = [
         ("Time Value of Money", "EngEco_1"),
         ("Comparison of Alternatives", "EngEco_2"),
@@ -96,7 +106,7 @@ if st.session_state.page == "landing":
     cols = [col1, col2, col3, col4, col5]
     for i, (name, prefix) in enumerate(categories):
         with cols[i]:
-            if st.button(f"📘 Practice {name}", key=f"cat_{prefix}", use_container_width=True):
+            if st.button(f"📘 {name}", key=f"cat_{prefix}", use_container_width=True):
                 cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
                 if cat_probs:
                     st.session_state.current_prob = random.choice(cat_probs)
@@ -136,7 +146,7 @@ elif st.session_state.page == "chat":
         st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
         st.session_state.last_id = prob['id']
 
-    # Chat history display & Input aligned
+    # Unified container to align width of chat input and messages
     chat_container = st.container()
     with chat_container:
         chat_box = st.container(height=400)
@@ -148,7 +158,6 @@ elif st.session_state.page == "chat":
                         st.markdown(text)
 
         if user_input := st.chat_input("Enter your step or answer..."):
-            # Check for numeric match
             is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
             if is_correct:
@@ -164,9 +173,9 @@ elif st.session_state.page == "chat":
 
     st.markdown("---")
     if st.button("⏭️ Next Problem"):
+        # Cycle through same category problems
         prefix = prob['id'].rsplit('_', 1)[0]
         cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-        # Pick a different problem in same category
         remaining = [p for p in cat_probs if p['id'] != prob['id']]
         st.session_state.current_prob = random.choice(remaining if remaining else cat_probs)
         st.session_state.last_id = None
@@ -181,8 +190,7 @@ elif st.session_state.page == "lecture":
     
     with col_content:
         st.write(f"### Understanding {topic}")
-        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** as required for the FE Exam.")
-        st.image("https://via.placeholder.com/800x400.png?text=Engineering+Economy+Financial+Diagram")
+        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** required for the FE Exam.")
         
         if st.button("Back to Menu"):
             st.session_state.page = "landing"
