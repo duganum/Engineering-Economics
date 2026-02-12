@@ -27,9 +27,9 @@ st.markdown("""
         font-size: 2rem !important;
         line-height: 1.2 !important;
     }
-    /* Aligns the chat input styling with the message container */
+    /* Ensures the inline chat input aligns width with container */
     .stChatInput {
-        padding-bottom: 20px !important;
+        padding-bottom: 10px !important;
     }
     /* Scannable info box */
     .stAlert {
@@ -42,7 +42,9 @@ st.markdown("""
 # 3. Load Engineering Economics Problems (Matching GitHub File System)
 @st.cache_data
 def load_engineering_economics_data():
+    # Use the EXACT case-sensitive filename from your GitHub repository
     file_name = 'Eng_Economics_problems.json'
+    
     try:
         with open(file_name, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -142,10 +144,11 @@ elif st.session_state.page == "chat":
         st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
         st.session_state.last_id = prob['id']
 
-    # FIXED: Height reduced by 20% (450 -> 360) and nesting chat_input inside unified container
-    unified_chat_container = st.container()
-    with unified_chat_container:
-        chat_box = st.container(height=360, border=True)
+    # FIXED: Chat history and input nested in a container to maintain width and visibility
+    # Height reduced to 300px to ensure "Next Problem" button is visible
+    chat_container = st.container()
+    with chat_container:
+        chat_box = st.container(height=300, border=True)
         with chat_box:
             for msg in st.session_state.chat_session.history:
                 text = get_text(msg)
@@ -153,7 +156,6 @@ elif st.session_state.page == "chat":
                     with st.chat_message(get_role(msg)):
                         st.markdown(text)
 
-        # chat_input inside the same container ensures matching width
         if user_input := st.chat_input("Enter your step or answer..."):
             is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
@@ -169,6 +171,7 @@ elif st.session_state.page == "chat":
             st.rerun()
 
     st.markdown("---")
+    # This button will now be visible on the screen
     if st.button("⏭️ Next Problem"):
         prefix = prob['id'].rsplit('_', 1)[0]
         cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
@@ -187,22 +190,19 @@ elif st.session_state.page == "lecture":
     with col_content:
         st.write(f"### Understanding {topic}")
         st.markdown(f"In this module, we explore the fundamental principles of **{topic}** required for the FE Exam.")
-        
         if st.button("Back to Menu"):
             st.session_state.page = "landing"
             st.rerun()
 
     with col_tutor:
         st.subheader("💬 Ask Professor Um")
-        
-        # FIXED: Matching widths and reduced height for Lecture side
         unified_lec_container = st.container()
         if "lec_session" not in st.session_state:
             model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage the student with Socratic questions.")
             st.session_state.lec_session = model.start_chat(history=[])
             
         with unified_lec_container:
-            lec_chat_box = st.container(height=320, border=True)
+            lec_chat_box = st.container(height=300, border=True)
             with lec_chat_box:
                 for msg in st.session_state.lec_session.history:
                     with st.chat_message(get_role(msg)):
