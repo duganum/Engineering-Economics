@@ -2,12 +2,13 @@ import streamlit as st
 import json
 import random
 import re
+import os
 from logic_v2_GitHub import get_gemini_model, check_numeric_match, analyze_and_send_report
 
 # 1. Page Configuration
 st.set_page_config(page_title="TAMUCC Engineering Economy Tutor", layout="wide")
 
-# 2. CSS: UI consistency and Top Clipping Fix
+# 2. CSS: Professional UI & Fix for Top Clipping
 st.markdown("""
     <style>
     div.stButton > button {
@@ -33,12 +34,18 @@ st.markdown("""
 
 # 3. Load Engineering Economics Problems
 @st.cache_data
-def load_engineering_economics_data():
-    # Ensure this matches the JSON file name containing the 150 problems
-    with open('engineering_economics_problems.json', 'r') as f:
-        return json.load(f)
+def load_problems():
+    # Fix: Ensure we look for the correct file and handle paths correctly for Streamlit Cloud
+    file_path = os.path.join(os.getcwd(), 'engineering_economics_problems.json')
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        # Fallback for local/cloud naming discrepancies
+        with open('engineering_economics_problems.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
 
-PROBLEMS = load_engineering_economics_data()
+PROBLEMS = load_problems()
 
 # 4. Initialize Session State
 if "page" not in st.session_state: st.session_state.page = "landing"
@@ -89,11 +96,12 @@ if st.session_state.page == "landing":
     cols = [col1, col2, col3, col4, col5]
     for i, (name, prefix) in enumerate(categories):
         with cols[i]:
-            if st.button(f"📘 {name}", key=f"cat_{prefix}", use_container_width=True):
+            if st.button(f"📘 Practice {name}", key=f"cat_{prefix}", use_container_width=True):
                 cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-                st.session_state.current_prob = random.choice(cat_probs)
-                st.session_state.page = "chat"
-                st.rerun()
+                if cat_probs:
+                    st.session_state.current_prob = random.choice(cat_probs)
+                    st.session_state.page = "chat"
+                    st.rerun()
             
             if st.button(f"🎓 Lecture", key=f"lec_{prefix}", use_container_width=True):
                 st.session_state.lecture_topic = name
@@ -112,14 +120,14 @@ elif st.session_state.page == "chat":
             st.session_state.page = "landing"
             st.rerun()
     
-    st.markdown(f"### Category: {prob['category']}")
+    st.markdown(f"**Category:** {prob['category']}")
     st.info(prob['statement'])
     
     if "chat_session" not in st.session_state or st.session_state.last_id != prob['id']:
         sys_prompt = (
             f"You are an Engineering Economy Professor at TAMUCC. Help the student solve: {prob['statement']}. "
             "Use the Socratic method—guide them with one targeted question at a time. "
-            "ALWAYS use LaTeX for financial formulas and interest factors. "
+            "ALWAYS use LaTeX for financial formulas and interest factors like (P/F, i%, n). "
             "If they get it right, congratulate them and provide a brief step-by-step summary."
         )
         st.session_state.chat_model = get_gemini_model(sys_prompt)
@@ -128,7 +136,7 @@ elif st.session_state.page == "chat":
         st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
         st.session_state.last_id = prob['id']
 
-    # Inline Chat Box
+    # Chat history display & Input aligned
     chat_container = st.container()
     with chat_container:
         chat_box = st.container(height=400)
@@ -139,7 +147,8 @@ elif st.session_state.page == "chat":
                     with st.chat_message(get_role(msg)):
                         st.markdown(text)
 
-        if user_input := st.chat_input("Enter your step..."):
+        if user_input := st.chat_input("Enter your step or answer..."):
+            # Check for numeric match
             is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
             if is_correct:
@@ -155,10 +164,11 @@ elif st.session_state.page == "chat":
 
     st.markdown("---")
     if st.button("⏭️ Next Problem"):
-        # Logic to stay within the same category
         prefix = prob['id'].rsplit('_', 1)[0]
         cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-        st.session_state.current_prob = random.choice([p for p in cat_probs if p['id'] != prob['id']])
+        # Pick a different problem in same category
+        remaining = [p for p in cat_probs if p['id'] != prob['id']]
+        st.session_state.current_prob = random.choice(remaining if remaining else cat_probs)
         st.session_state.last_id = None
         st.rerun()
 
@@ -171,7 +181,7 @@ elif st.session_state.page == "lecture":
     
     with col_content:
         st.write(f"### Understanding {topic}")
-        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** required for the FE Exam.")
+        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** as required for the FE Exam.")
         st.image("https://via.placeholder.com/800x400.png?text=Engineering+Economy+Financial+Diagram")
         
         if st.button("Back to Menu"):
