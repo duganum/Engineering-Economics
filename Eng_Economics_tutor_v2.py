@@ -42,15 +42,11 @@ st.markdown("""
 # 3. Load Engineering Economics Problems (Matching GitHub File System)
 @st.cache_data
 def load_engineering_economics_data():
-    # Use the EXACT case-sensitive filename from your GitHub repository
     file_name = 'Eng_Economics_problems.json'
-    
-    # Attempt to load from the current working directory (root on Streamlit Cloud)
     try:
         with open(file_name, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        # Fallback for different environment pathing
         base_path = os.path.dirname(__file__)
         full_path = os.path.join(base_path, file_name)
         with open(full_path, 'r', encoding='utf-8') as f:
@@ -146,30 +142,31 @@ elif st.session_state.page == "chat":
         st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
         st.session_state.last_id = prob['id']
 
-    # FIXED: Chat history in a scrolling container with fixed height
-    # This prevents the whole page from jumping as the chat grows
-    chat_box = st.container(height=450, border=True)
-    with chat_box:
-        for msg in st.session_state.chat_session.history:
-            text = get_text(msg)
-            if "HIDDEN_INSTRUCTION" not in text:
-                with st.chat_message(get_role(msg)):
-                    st.markdown(text)
+    # FIXED: Height reduced by 20% (450 -> 360) and nesting chat_input inside unified container
+    unified_chat_container = st.container()
+    with unified_chat_container:
+        chat_box = st.container(height=360, border=True)
+        with chat_box:
+            for msg in st.session_state.chat_session.history:
+                text = get_text(msg)
+                if "HIDDEN_INSTRUCTION" not in text:
+                    with st.chat_message(get_role(msg)):
+                        st.markdown(text)
 
-    # Input is aligned below the scrolling box
-    if user_input := st.chat_input("Enter your step or answer..."):
-        is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
-        
-        if is_correct:
-            st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
-            hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
-            st.session_state.chat_session.send_message(hidden_prompt)
+        # chat_input inside the same container ensures matching width
+        if user_input := st.chat_input("Enter your step or answer..."):
+            is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
-            history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
-            analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
-        else:
-            st.session_state.chat_session.send_message(user_input)
-        st.rerun()
+            if is_correct:
+                st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
+                hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
+                st.session_state.chat_session.send_message(hidden_prompt)
+                
+                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
+                analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
+            else:
+                st.session_state.chat_session.send_message(user_input)
+            st.rerun()
 
     st.markdown("---")
     if st.button("⏭️ Next Problem"):
@@ -198,18 +195,19 @@ elif st.session_state.page == "lecture":
     with col_tutor:
         st.subheader("💬 Ask Professor Um")
         
-        # FIXED: Scrolling container for Lecture chat
-        lec_chat_box = st.container(height=400, border=True)
-        
+        # FIXED: Matching widths and reduced height for Lecture side
+        unified_lec_container = st.container()
         if "lec_session" not in st.session_state:
             model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage the student with Socratic questions.")
             st.session_state.lec_session = model.start_chat(history=[])
-        
-        with lec_chat_box:
-            for msg in st.session_state.lec_session.history:
-                with st.chat_message(get_role(msg)):
-                    st.markdown(get_text(msg))
-        
-        if lec_input := st.chat_input("Ask a question about the concept..."):
-            st.session_state.lec_session.send_message(lec_input)
-            st.rerun()
+            
+        with unified_lec_container:
+            lec_chat_box = st.container(height=320, border=True)
+            with lec_chat_box:
+                for msg in st.session_state.lec_session.history:
+                    with st.chat_message(get_role(msg)):
+                        st.markdown(get_text(msg))
+            
+            if lec_input := st.chat_input("Ask a question about the concept..."):
+                st.session_state.lec_session.send_message(lec_input)
+                st.rerun()
