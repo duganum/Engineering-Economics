@@ -2,12 +2,12 @@ import streamlit as st
 import json
 import random
 import re
-from logic_v2_GitHub import get_gemini_model, load_problems, check_numeric_match, analyze_and_send_report
+from logic_v2_GitHub import get_gemini_model, check_numeric_match, analyze_and_send_report
 
 # 1. Page Configuration
-st.set_page_config(page_title="TAMUCC Calculus Tutor", layout="wide")
+st.set_page_config(page_title="TAMUCC Engineering Economy Tutor", layout="wide")
 
-# 2. CSS: UI consistency
+# 2. CSS: UI consistency and Top Clipping Fix
 st.markdown("""
     <style>
     div.stButton > button {
@@ -15,28 +15,51 @@ st.markdown("""
         font-size: 16px;
         font-weight: bold;
     }
+    .block-container { 
+        padding-top: 3.5rem !important; 
+        max-width: 1000px; 
+    }
+    h1 {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    .stChatInput {
+        padding-bottom: 20px !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Initialize Session State
+# 3. Load Engineering Economics Problems
+@st.cache_data
+def load_engineering_economics_data():
+    # Ensure this matches the JSON file name containing the 150 problems
+    with open('engineering_economics_problems.json', 'r') as f:
+        return json.load(f)
+
+PROBLEMS = load_engineering_economics_data()
+
+# 4. Initialize Session State
 if "page" not in st.session_state: st.session_state.page = "landing"
 if "user_name" not in st.session_state: st.session_state.user_name = None
 if "current_prob" not in st.session_state: st.session_state.current_prob = None
-if "chat_history" not in st.session_state: st.session_state.chat_history = []
+if "last_id" not in st.session_state: st.session_state.last_id = None
 if "lecture_topic" not in st.session_state: st.session_state.lecture_topic = None
 
-# 4. Load Calculus Problems
-@st.cache_data
-def load_calculus_data():
-    # 이전에 생성한 150문제 JSON 파일 로드
-    with open('calculus_problems.json', 'r') as f:
-        return json.load(f)
+# --- Helper Logic ---
+def get_role(msg):
+    role = msg.role if hasattr(msg, 'role') else msg.get('role')
+    return "assistant" if role == "model" else "user"
 
-PROBLEMS = load_calculus_data()
+def get_text(msg):
+    if hasattr(msg, 'parts'):
+        return msg.parts[0].text
+    return msg.get('parts')[0].get('text')
 
 # --- Page 0: Login ---
 if st.session_state.user_name is None:
-    st.title("🧮 Calculus AI Tutor Portal")
+    st.title("💰 Engineering Economy AI Tutor")
     st.subheader("Texas A&M University - Corpus Christi")
     with st.form("login_form"):
         name_input = st.text_input("Full Name")
@@ -51,23 +74,22 @@ if st.session_state.page == "landing":
     st.title(f"Welcome, {st.session_state.user_name}!")
     st.info("Select a category to start practice or view a lecture.")
     
-    # 5 Categories Selection
     st.subheader("💡 Choose Your Focus Area")
     col1, col2, col3, col4, col5 = st.columns(5)
     
+    # Updated Categories for Engineering Economy
     categories = [
-        ("Derivatives", "CAL_1"),
-        ("Integrals", "CAL_2"),
-        ("Partial Derivatives", "CAL_3"),
-        ("Vector Analysis", "CAL_4"),
-        ("Multiple Integrals", "CAL_5")
+        ("Time Value of Money", "EngEco_1"),
+        ("Comparison of Alternatives", "EngEco_2"),
+        ("Cost/Financial Analysis", "EngEco_3"),
+        ("Risk & Uncertainty", "EngEco_4"),
+        ("Specialized Apps", "EngEco_5")
     ]
     
     cols = [col1, col2, col3, col4, col5]
     for i, (name, prefix) in enumerate(categories):
         with cols[i]:
             if st.button(f"📘 {name}", key=f"cat_{prefix}", use_container_width=True):
-                # 해당 카테고리 문제만 필터링 후 랜덤 선택
                 cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
                 st.session_state.current_prob = random.choice(cat_probs)
                 st.session_state.page = "chat"
@@ -78,58 +100,67 @@ if st.session_state.page == "landing":
                 st.session_state.page = "lecture"
                 st.rerun()
 
-# --- Page 2: Socratic Practice (Infinite Random Flow) ---
+# --- Page 2: Socratic Practice ---
 elif st.session_state.page == "chat":
     prob = st.session_state.current_prob
-    st.button("🏠 Home", on_click=lambda: setattr(st.session_state, 'page', 'landing'))
     
-    st.title("📝 Problem Practice")
-    cols = st.columns([2, 1])
+    header_col1, header_col2 = st.columns([0.8, 0.2])
+    with header_col1:
+        st.title("📝 Problem Practice")
+    with header_col2:
+        if st.button("🏠 Home", use_container_width=True):
+            st.session_state.page = "landing"
+            st.rerun()
     
-    with cols[0]:
-        st.subheader(prob['category'])
-        st.info(prob['statement'])
-        
-        # Chat interface
-        if "chat_session" not in st.session_state or st.session_state.current_prob['id'] != st.session_state.last_id:
-            sys_prompt = f"You are a Calculus Tutor at TAMUCC. Help {st.session_state.user_name} solve: {prob['statement']}. Socratic method only. Use LaTeX."
-            st.session_state.chat_model = get_gemini_model(sys_prompt)
-            st.session_state.chat_session = st.session_state.chat_model.start_chat(history=[])
-            st.session_state.last_id = prob['id']
+    st.markdown(f"### Category: {prob['category']}")
+    st.info(prob['statement'])
+    
+    if "chat_session" not in st.session_state or st.session_state.last_id != prob['id']:
+        sys_prompt = (
+            f"You are an Engineering Economy Professor at TAMUCC. Help the student solve: {prob['statement']}. "
+            "Use the Socratic method—guide them with one targeted question at a time. "
+            "ALWAYS use LaTeX for financial formulas and interest factors. "
+            "If they get it right, congratulate them and provide a brief step-by-step summary."
+        )
+        st.session_state.chat_model = get_gemini_model(sys_prompt)
+        st.session_state.chat_session = st.session_state.chat_model.start_chat(history=[])
+        start_msg = f"Hello {st.session_state.user_name}. Looking at this problem, what is the first parameter we need to identify?"
+        st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
+        st.session_state.last_id = prob['id']
 
-        for msg in st.session_state.chat_session.history:
-            with st.chat_message("assistant" if msg.role == "model" else "user"):
-                st.markdown(msg.parts[0].text)
+    # Inline Chat Box
+    chat_container = st.container()
+    with chat_container:
+        chat_box = st.container(height=400)
+        with chat_box:
+            for msg in st.session_state.chat_session.history:
+                text = get_text(msg)
+                if "HIDDEN_INSTRUCTION" not in text:
+                    with st.chat_message(get_role(msg)):
+                        st.markdown(text)
 
-        if user_input := st.chat_input("Enter your answer or step..."):
-            # Check for numeric match
-            is_correct = False
-            for target, val in prob['targets'].items():
-                if check_numeric_match(user_input, val):
-                    is_correct = True
+        if user_input := st.chat_input("Enter your step..."):
+            is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
             if is_correct:
-                st.success("Correct! Well done.")
-                if st.button("Next Random Problem ➡️"):
-                    # 같은 카테고리에서 다음 문제 랜덤 추출
-                    prefix = prob['id'].split('_')[0] + "_" + prob['id'].split('_')[1]
-                    cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-                    st.session_state.current_prob = random.choice(cat_probs)
-                    st.rerun()
+                st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
+                hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
+                st.session_state.chat_session.send_message(hidden_prompt)
+                
+                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
+                analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
             else:
                 st.session_state.chat_session.send_message(user_input)
-                st.rerun()
+            st.rerun()
 
-    with cols[1]:
-        st.write("### Tutor Tools")
-        if st.button("Get a Hint"):
-            st.session_state.chat_session.send_message("Can you give me a small hint for the first step?")
-            st.rerun()
-        if st.button("New Problem (Skip)"):
-            prefix = prob['id'].split('_')[0] + "_" + prob['id'].split('_')[1]
-            cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-            st.session_state.current_prob = random.choice(cat_probs)
-            st.rerun()
+    st.markdown("---")
+    if st.button("⏭️ Next Problem"):
+        # Logic to stay within the same category
+        prefix = prob['id'].rsplit('_', 1)[0]
+        cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
+        st.session_state.current_prob = random.choice([p for p in cat_probs if p['id'] != prob['id']])
+        st.session_state.last_id = None
+        st.rerun()
 
 # --- Page 3: Interactive Lecture ---
 elif st.session_state.page == "lecture":
@@ -139,10 +170,9 @@ elif st.session_state.page == "lecture":
     col_content, col_tutor = st.columns([1, 1])
     
     with col_content:
-        # 개념 설명 렌더링 (Static 이미지 혹은 텍스트)
         st.write(f"### Understanding {topic}")
-        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** as required for the FE Exam.")
-        # 정역학처럼 시뮬레이션 이미지가 있다면 여기에 추가 (render_lecture_visual 함수 활용)
+        st.markdown(f"In this module, we explore the fundamental principles of **{topic}** required for the FE Exam.")
+        st.image("https://via.placeholder.com/800x400.png?text=Engineering+Economy+Financial+Diagram")
         
         if st.button("Back to Menu"):
             st.session_state.page = "landing"
@@ -150,15 +180,14 @@ elif st.session_state.page == "lecture":
 
     with col_tutor:
         st.subheader("💬 Ask Professor Um")
-        # 소크라테스식 대화 인터페이스 (Statics 코드와 동일 로직)
         if "lec_session" not in st.session_state:
-            model = get_gemini_model(f"You are Prof. Um teaching {topic}. Start with a question about the concept.")
+            model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage the student with Socratic questions.")
             st.session_state.lec_session = model.start_chat(history=[])
         
         for msg in st.session_state.lec_session.history:
-            with st.chat_message("assistant" if msg.role == "model" else "user"):
-                st.markdown(msg.parts[0].text)
+            with st.chat_message(get_role(msg)):
+                st.markdown(get_text(msg))
         
-        if lec_input := st.chat_input("Ask a question..."):
+        if lec_input := st.chat_input("Ask a question about the concept..."):
             st.session_state.lec_session.send_message(lec_input)
             st.rerun()
