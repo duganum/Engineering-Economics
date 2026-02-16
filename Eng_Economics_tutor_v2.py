@@ -3,6 +3,8 @@ import json
 import random
 import re
 import os
+import time
+from google.api_core import exceptions  # Added for rate limit handling
 from logic_v2_GitHub import get_gemini_model, check_numeric_match, analyze_and_send_report
 
 # 1. Page Configuration
@@ -16,15 +18,24 @@ st.markdown("""
         font-size: 16px;
         font-weight: bold;
     }
-    /* Fixed clipping by increasing top padding and normalizing margins */
+    /* INCREASED PADDING further to ensure top visibility and fix clipping */
     .block-container { 
-        padding-top: 3.5rem !important; 
-        max-width: 1000px; 
+        padding-top: 6rem !important; 
+        max-width: 1100px; 
+    }
+    .status-badge {
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+        border: 1px solid rgba(0,0,0,0.1);
+        margin-top: 5px !important;
     }
     h1 {
         margin-top: 0px !important;
         padding-top: 0px !important;
-        font-size: 2rem !important;
+        font-size: 2.2rem !important;
         line-height: 1.2 !important;
     }
     /* Ensures the inline chat input aligns width with container */
@@ -39,12 +50,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Load Engineering Economics Problems (Matching GitHub File System)
+# 3. Load Engineering Economics Data
 @st.cache_data
 def load_engineering_economics_data():
-    # Use the EXACT case-sensitive filename from your GitHub repository
     file_name = 'Eng_Economics_problems.json'
-    
     try:
         with open(file_name, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -62,6 +71,7 @@ if "user_name" not in st.session_state: st.session_state.user_name = None
 if "current_prob" not in st.session_state: st.session_state.current_prob = None
 if "last_id" not in st.session_state: st.session_state.last_id = None
 if "lecture_topic" not in st.session_state: st.session_state.lecture_topic = None
+if "api_busy" not in st.session_state: st.session_state.api_busy = False
 
 # --- Helper Logic ---
 def get_role(msg):
@@ -72,6 +82,16 @@ def get_text(msg):
     if hasattr(msg, 'parts'):
         return msg.parts[0].text
     return msg.get('parts')[0].get('text')
+
+def draw_header_with_status(title_text):
+    head_col1, head_col2 = st.columns([4, 1])
+    with head_col1:
+        st.title(title_text)
+    with head_col2:
+        if st.session_state.api_busy:
+            st.markdown('<div class="status-badge" style="background-color: #ff4b4b; color: white;">🔴 Professor Busy</div>', unsafe_allow_html=True)
+        else:
+            st.markdown('<div class="status-badge" style="background-color: #28a745; color: white;">🟢 Professor Ready</div>', unsafe_allow_html=True)
 
 # --- Page 0: Login ---
 if st.session_state.user_name is None:
@@ -85,13 +105,10 @@ if st.session_state.user_name is None:
                 st.rerun()
     st.stop()
 
-# --- Page 1: Main Menu ---
+# --- Page 1: Main Menu (Unified Layout) ---
 if st.session_state.page == "landing":
-    st.title(f"Welcome, {st.session_state.user_name}!")
+    draw_header_with_status(f"Welcome, {st.session_state.user_name}!")
     st.info("Select a category to start practice or view a lecture.")
-    
-    st.subheader("💡 Choose Your Focus Area")
-    col1, col2, col3, col4, col5 = st.columns(5)
     
     categories = [
         ("Time Value of Money", "EngEco_1"),
@@ -101,113 +118,169 @@ if st.session_state.page == "landing":
         ("Specialized Apps", "EngEco_5")
     ]
     
-    cols = [col1, col2, col3, col4, col5]
+    # SECTION A: Interactive Lectures
+    st.markdown("### 🎓 Interactive Lectures")
+    col_l1, col_l2, col_l3, col_l4, col_l5 = st.columns(5)
+    l_cols = [col_l1, col_l2, col_l3, col_l4, col_l5]
     for i, (name, prefix) in enumerate(categories):
-        with cols[i]:
-            if st.button(f"📘 {name}", key=f"cat_{prefix}", use_container_width=True):
+        with l_cols[i]:
+            if st.button(f"🎓 Lecture: {name}", key=f"lec_{prefix}", use_container_width=True):
+                st.session_state.lecture_topic = name
+                st.session_state.page = "lecture"
+                st.rerun()
+
+    st.markdown("---")
+    
+    # SECTION B: Practice Problems
+    st.markdown("### 📝 Problem Practice")
+    col_p1, col_p2, col_p3, col_p4, col_p5 = st.columns(5)
+    p_cols = [col_p1, col_p2, col_p3, col_p4, col_p5]
+    for i, (name, prefix) in enumerate(categories):
+        with p_cols[i]:
+            if st.button(f"📘 {name} Problems", key=f"cat_{prefix}", use_container_width=True):
                 cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
                 if cat_probs:
                     st.session_state.current_prob = random.choice(cat_probs)
                     st.session_state.page = "chat"
                     st.rerun()
-            
-            if st.button(f"🎓 Lecture", key=f"lec_{prefix}", use_container_width=True):
-                st.session_state.lecture_topic = name
-                st.session_state.page = "lecture"
-                st.rerun()
 
 # --- Page 2: Socratic Practice ---
 elif st.session_state.page == "chat":
     prob = st.session_state.current_prob
+    draw_header_with_status("📝 Problem Practice")
     
-    header_col1, header_col2 = st.columns([0.8, 0.2])
-    with header_col1:
-        st.title("📝 Problem Practice")
-    with header_col2:
-        if st.button("🏠 Home", use_container_width=True):
-            st.session_state.page = "landing"
-            st.rerun()
+    col_info, col_chat = st.columns([1, 1.2])
     
-    st.markdown(f"**Category:** {prob['category']}")
-    st.info(prob['statement'])
+    with col_info:
+        st.markdown(f"**Category:** {prob['category']}")
+        st.info(prob['statement'])
+        
+        st.divider()
+        st.subheader("📝 Session Analysis")
+        feedback = st.text_area("Notes for Dr. Um:", placeholder="How do you feel about this concept?", height=100)
+        
+        if st.button("🚀 Submit Session", use_container_width=True):
+            if "chat_session" in st.session_state:
+                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
+                with st.spinner("Analyzing mastery..."):
+                    analyze_and_send_report(st.session_state.user_name, f"EngEco: {prob['id']}", f"History:\n{history_text}\nFeedback: {feedback}")
+                    st.success("Analysis sent to dugan.um@gmail.com")
+                    time.sleep(2)
+                    st.session_state.page = "landing"; st.rerun()
+
+        if st.button("🏠 Exit without Submitting", use_container_width=True):
+            st.session_state.page = "landing"; st.rerun()
     
     if "chat_session" not in st.session_state or st.session_state.last_id != prob['id']:
         sys_prompt = (
             f"You are an Engineering Economy Professor at TAMUCC. Help the student solve: {prob['statement']}. "
-            "Use the Socratic method—guide them with one targeted question at a time. "
-            "ALWAYS use LaTeX for financial formulas and interest factors like (P/F, i%, n). "
-            "If they get it right, congratulate them and provide a brief step-by-step summary."
+            "Use the Socratic method—ask ONE targeted question at a time. "
+            "ALWAYS use LaTeX for financial formulas and interest factors. "
+            "Do not provide direct answers. Guide the student step-by-step."
         )
-        st.session_state.chat_model = get_gemini_model(sys_prompt)
-        st.session_state.chat_session = st.session_state.chat_model.start_chat(history=[])
-        start_msg = f"Hello {st.session_state.user_name}. Looking at this problem, what is the first parameter we need to identify?"
-        st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
-        st.session_state.last_id = prob['id']
+        try:
+            st.session_state.chat_model = get_gemini_model(sys_prompt)
+            st.session_state.chat_session = st.session_state.chat_model.start_chat(history=[])
+            start_msg = f"Hello {st.session_state.user_name}. Looking at this problem, what is the first parameter we need to identify?"
+            st.session_state.chat_session.history.append({"role": "model", "parts": [{"text": start_msg}]})
+            st.session_state.last_id = prob['id']
+        except Exception as e:
+            st.error(f"Professor Initialization Error: {e}")
 
-    # FIXED: Chat history and input nested in a container to maintain width and visibility
-    # Height reduced to 300px to ensure "Next Problem" button is visible
-    chat_container = st.container()
-    with chat_container:
-        chat_box = st.container(height=300, border=True)
+    with col_chat:
+        st.markdown("### 💬 Socratic Discussion")
+        chat_box = st.container(height=400, border=True)
         with chat_box:
-            for msg in st.session_state.chat_session.history:
-                text = get_text(msg)
-                if "HIDDEN_INSTRUCTION" not in text:
-                    with st.chat_message(get_role(msg)):
-                        st.markdown(text)
+            if "chat_session" in st.session_state:
+                for msg in st.session_state.chat_session.history:
+                    text = get_text(msg)
+                    if "HIDDEN_INSTRUCTION" not in text:
+                        with st.chat_message(get_role(msg)):
+                            st.markdown(text)
 
-        if user_input := st.chat_input("Enter your step or answer..."):
+        if user_input := st.chat_input("Enter your step..."):
+            st.session_state.api_busy = True
             is_correct = any(check_numeric_match(user_input, val) for val in prob['targets'].values())
             
-            if is_correct:
-                st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
-                hidden_prompt = f"HIDDEN_INSTRUCTION: Correct answer was {user_input}. Congratulate and summarize steps."
-                st.session_state.chat_session.send_message(hidden_prompt)
+            try:
+                if is_correct:
+                    st.session_state.chat_session.history.append({"role": "user", "parts": [{"text": user_input}]})
+                    hidden_prompt = f"HIDDEN_INSTRUCTION: Correct was {user_input}. Congratulate and summarize steps."
+                    st.session_state.chat_session.send_message(hidden_prompt)
+                else:
+                    st.session_state.chat_session.send_message(user_input)
                 
-                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.chat_session.history])
-                analyze_and_send_report(st.session_state.user_name, f"SUCCESS: {prob['id']}", history_text)
-            else:
-                st.session_state.chat_session.send_message(user_input)
-            st.rerun()
+                st.session_state.api_busy = False
+                st.rerun()
+            except exceptions.ResourceExhausted:
+                st.session_state.api_busy = False
+                st.error("Professor busy (Rate Limit). Please wait 60 seconds.")
+            except Exception as e:
+                st.session_state.api_busy = False
+                st.error(f"Connection Pause: {e}")
 
-    st.markdown("---")
-    # This button will now be visible on the screen
     if st.button("⏭️ Next Problem"):
         prefix = prob['id'].rsplit('_', 1)[0]
         cat_probs = [p for p in PROBLEMS if p['id'].startswith(prefix)]
-        remaining = [p for p in cat_probs if p['id'] != prob['id']]
-        st.session_state.current_prob = random.choice(remaining if remaining else cat_probs)
+        if cat_probs:
+            remaining = [p for p in cat_probs if p['id'] != prob['id']]
+            st.session_state.current_prob = random.choice(remaining if remaining else cat_probs)
         st.session_state.last_id = None
         st.rerun()
 
 # --- Page 3: Interactive Lecture ---
 elif st.session_state.page == "lecture":
     topic = st.session_state.lecture_topic
-    st.title(f"🎓 Lecture: {topic}")
-    
-    col_content, col_tutor = st.columns([1, 1])
+    draw_header_with_status(f"🎓 Lecture: {topic}")
+    col_content, col_tutor = st.columns([1, 1.2])
     
     with col_content:
         st.write(f"### Understanding {topic}")
         st.markdown(f"In this module, we explore the fundamental principles of **{topic}** required for the FE Exam.")
-        if st.button("Back to Menu"):
-            st.session_state.page = "landing"
-            st.rerun()
+        
+        st.divider()
+        st.subheader("📝 Session Analysis")
+        lec_feedback = st.text_area("Final thoughts:", placeholder="What part was most confusing?", height=100)
+        
+        if st.button("🚀 Submit Lecture Session", use_container_width=True):
+            if "lec_session" in st.session_state:
+                history_text = "".join([f"{get_role(m)}: {get_text(m)}\n" for m in st.session_state.lec_session.history])
+                with st.spinner("Submitting..."):
+                    analyze_and_send_report(st.session_state.user_name, f"EngEco LECTURE: {topic}", f"History:\n{history_text}\nFeedback: {lec_feedback}")
+                    st.success("Report emailed to Dr. Um!")
+                    time.sleep(2)
+                    st.session_state.page = "landing"; st.rerun()
+
+        if st.button("🏠 Exit to Main", use_container_width=True):
+            st.session_state.page = "landing"; st.rerun()
 
     with col_tutor:
         st.subheader("💬 Ask Professor Um")
-        unified_lec_container = st.container()
         if "lec_session" not in st.session_state:
-            model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage the student with Socratic questions.")
-            st.session_state.lec_session = model.start_chat(history=[])
-            
-        with unified_lec_container:
-            lec_chat_box = st.container(height=300, border=True)
-            with lec_chat_box:
+            try:
+                model = get_gemini_model(f"You are Prof. Um teaching {topic}. Engage with Socratic questions.")
+                st.session_state.lec_session = model.start_chat(history=[])
+                greeting = f"Welcome! What part of {topic} shall we start with?"
+                st.session_state.lec_session.history.append({"role": "model", "parts": [{"text": greeting}]})
+            except Exception as e:
+                st.error(f"Professor Error: {e}")
+        
+        lec_chat_box = st.container(height=400, border=True)
+        with lec_chat_box:
+            if "lec_session" in st.session_state:
                 for msg in st.session_state.lec_session.history:
                     with st.chat_message(get_role(msg)):
                         st.markdown(get_text(msg))
             
-            if lec_input := st.chat_input("Ask a question about the concept..."):
+        if lec_input := st.chat_input("Ask a question about the concept..."):
+            st.session_state.api_busy = True
+            try:
                 st.session_state.lec_session.send_message(lec_input)
+                st.session_state.api_busy = False
                 st.rerun()
+            except exceptions.ResourceExhausted:
+                st.session_state.api_busy = False
+                st.error("Rate Limit reached. Please wait.")
+            except Exception as e:
+                st.session_state.api_busy = False
+                st.error(f"Error: {e}")
