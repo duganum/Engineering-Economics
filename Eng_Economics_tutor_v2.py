@@ -173,10 +173,21 @@ elif st.session_state.page == "chat":
     
     if "chat_session" not in st.session_state or st.session_state.last_id != prob['id']:
         sys_prompt = (
-            f"You are an Engineering Economy Professor at TAMUCC. Help the student solve: {prob['statement']}. "
-            "Use the Socratic method—ask ONE targeted question at a time. "
-            "ALWAYS use LaTeX for financial formulas and interest factors. "
-            "Do not provide direct answers. Guide the student step-by-step."
+            f"You are Professor Dugan Um, an expert in Engineering Economy at TAMUCC. "
+            f"REFERENCE DATA: {prob['statement']}. "
+            "### CORE INSTRUCTIONS:\n"
+            "1. LITERAL SOURCE OF TRUTH: Treat the REFERENCE DATA as the absolute authority. "
+            "If the problem specifies a unique interest rate, a non-standard compounding period, "
+            "or specific salvage values, do not 'correct' them to general conventions. Accept the "
+            "student's math if it aligns with these specific problem parameters.\n"
+            "2. VALIDATION BEFORE CRITIQUE: Before questioning a student's setup, re-verify the "
+            "interest factors (e.g., P/A vs P/F) and time periods defined in the REFERENCE DATA. "
+            "Ensure your feedback is grounded in the provided text, not general training data.\n"
+            "3. SOCRATIC DERIVATION: Ask ONE targeted question at a time to identify parameters (P, F, A, i, n). "
+            "Guide them to select the correct interest formula step-by-step. NEVER provide the full "
+            "calculation or answer immediately.\n"
+            "4. FINANCIAL PRECISION: ALWAYS use LaTeX for financial notation, interest factors like $(P/F, i\%, n)$, "
+            "and formulas."
         )
         try:
             st.session_state.chat_model = get_gemini_model(sys_prompt)
@@ -284,3 +295,4 @@ elif st.session_state.page == "lecture":
             except Exception as e:
                 st.session_state.api_busy = False
                 st.error(f"Error: {e}")
+
